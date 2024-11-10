@@ -1,0 +1,40 @@
+import sys
+import math
+R=1
+L=1
+U=1
+D=1
+order = input()
+side = input()
+if order[len(order)-1] == side:
+    print(1)
+else:
+    for i in order:
+        if i == "R":
+            L+=R
+            U*=2
+            D*=2
+            R=1
+        elif i == "L":
+            R+=L
+            U*=2
+            D*=2
+            L=1
+        elif i == "U":
+            L*=2
+            R*=2
+            D+=U
+            U=1
+        else:
+            L*=2
+            U+=D
+            R*=2
+            D=1
+    if side=="R":
+        print(R)
+    elif side=="L":
+        print(L)
+    elif side=="U":
+        print(U)
+    else:
+        print(D)
