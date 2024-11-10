@@ -1,0 +1,25 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+res=23
+ress=59
+petit=[]
+n = int(input())
+
+for i in range(n):
+    s = input()
+    t=s.split(':')
+    if int(t[0])<int(res):
+        petit.append(s)
+        res=int(t[0])
+print(sorted(petit)[0])
+    
+    
+    
+
+
+
+
+    
