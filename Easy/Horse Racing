@@ -1,0 +1,18 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+power_horse = []
+temp=99999999
+n = int(input())
+for i in range(n):
+    pi = int(input())
+    power_horse.append(pi)
+power_horse.sort()
+for i in range(len(power_horse)-1):
+    if abs(power_horse[i]-power_horse[i+1])<temp:
+        temp=abs(power_horse[i]-power_horse[i+1])
+print(temp)
+
+
