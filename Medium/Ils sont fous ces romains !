@@ -1,0 +1,38 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+r1 = input()
+r2 = input()
+def r(nombre):#fonction prenant en parametre un argument 'nombre' sous forme string
+    # Renvoie l’écriture décimale du nombre donné en chiffres romains
+
+    dico = {"I": 1, "V": 5, "X":10,"L":50,"C":100,"D":500,"M":1000,"CM":900,"CD":400,"XC":90,"XL":40,"IX":9,"IV":4}
+    if len(nombre) == 1:
+        return dico[nombre] #comme on a un seul caractère  romain on renvoit simplement le nombre décimal auquel il est affecté dans le dictionnaire
+    else:
+        ### on supprime le premier caractère de la chaîne contenue dans la variable nombre
+        ### et cette nouvelle chaîne est enregistrée dans la variable nombre_droite
+        nombre_droite = nombre[1:]
+
+        if dico[nombre[0]] >= dico[nombre[1]]: # si le premier terme du nombre est superieur ou egal au deuxieme :
+            return dico[nombre[0]] + r(nombre_droite) #on ajoute l'équivalent en décimal des 2 nombres , PS : On voit la récursivité ici puisqu'on rapelle la fonction pour calculer l'équivalent décimal du nombre sans le premier terme et la variable change jusqu'a ce que l'on ait trouvé le resultat finale
+        else:
+            return r(nombre_droite) - dico[nombre[0]] #on soustrait l'équivalent en décimal du premier terme avec celui de la variable nombre_droite PS : On voit la récursivité ici puisqu'on rapelle la fonction pour calculer l'équivalent décimal du nombre sans le premier terme la variable change jusqu'a ce que l'on ait trouvé le resultat finale
+chiffre_roman = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'),
+                  (90, 'XC'),  (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'),
+                  (5, 'V'), (4, 'IV'), (1, 'I')]
+
+def decimal_to_roman(x):
+    res = []
+    for v, l in chiffre_roman:
+        while x >= v:
+            x -= v
+            res.append(l)
+    return "".join(res)
+a=r(r1)
+b=r(r2)
+rep=(a+b)
+print(decimal_to_roman(rep))
