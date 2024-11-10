@@ -1,0 +1,73 @@
+import sys
+import math
+y=0
+x=0
+w=2
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+lignes=[]
+plateau = [[],[],[],[],[]]
+rep=""
+winLigne=False
+for i in range(3):
+    line = input()
+    lignes.append(line)
+    plateau[0].append(line[0])
+    plateau[1].append(line[1])
+    plateau[2].append(line[2])
+    plateau[3].append(plateau[i][y])
+    y+=1
+    plateau[4].append(lignes[x][w])
+    x+=1
+    w-=1
+print("lignes initiales",lignes,file=sys.stderr, flush=True)
+for i in range(len(lignes)):
+    if lignes[i].count('O')==2 and lignes[i].count('.')==1:
+        lignes[i] = "OOO"
+for i in range(len(lignes)):
+    if lignes[i].count('O')==3:
+        winLigne=True
+
+print("lignes avec celle gagnantes",lignes,file=sys.stderr, flush=True)
+print("colonnes",plateau,file=sys.stderr, flush=True)
+if winLigne==True:
+    for i in range(len(lignes)):
+        print(lignes[i])
+
+for i in range(len(plateau)):
+    if plateau[i].count("O")==2 and plateau[i].count(".")==1:
+        plateau[i] = ['O','O','O']
+print(plateau,file=sys.stderr, flush=True)
+
+
+if plateau[0].count('O')!=3 and  plateau[1].count('O')!=3 and  plateau[2].count('O')!=3:
+    if plateau[3].count('O')==3:
+        rep="O"+lignes[0][1]+lignes[0][2]
+        print(rep)
+        rep=""
+        rep=lignes[1][0]+"O"+lignes[1][2]
+        print(rep)
+        rep=""
+        rep=lignes[2][0]+lignes[2][1]+"O"
+        print(rep)
+        rep=""
+    elif plateau[4].count('O')==3:
+        rep=lignes[0][0]+lignes[0][1]+"O"
+        print(rep)
+        rep=""
+        rep=lignes[1][0]+"O"+lignes[1][2]
+        print(rep)
+        rep=""
+        rep="O"+lignes[2][1]+lignes[2][2]
+        print(rep)
+        rep=""
+elif winLigne==False:
+    for j in range(3):
+        for i in range(3):
+            rep+=plateau[i][0]
+        i=0
+        print(rep)
+        rep=""
+if winLigne==False and plateau[0].count('O')!=3 and plateau[1].count('O')!=3 and plateau[2].count('O')!=3 and plateau[3].count('O')!=3 and plateau[4].count('O')!=3:
+    print('false')
+
