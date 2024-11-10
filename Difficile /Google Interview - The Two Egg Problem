@@ -1,0 +1,9 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+
+n = int(input())
+a=(-1+math.sqrt(1-4*1*(-2*n)))/2
+print(math.ceil(a))
