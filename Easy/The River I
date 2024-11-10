@@ -1,0 +1,28 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+caca=True
+a=0
+b=0
+s=[]
+d=[]
+r1 = int(input())
+q= list(str(r1))
+r2 = int(input())
+w=list(str(r2))
+while True:
+    if r1<r2:
+        for i in q:
+            r1+=int(i)
+        q= list(str(r1))
+    elif r1>r2:
+        for i in w:
+            r2+=int(i)
+        w=list(str(r2))
+    elif r2==r1:
+        print(r1)
+        break
+
+
