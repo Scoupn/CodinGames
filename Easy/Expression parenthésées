@@ -1,0 +1,28 @@
+e = input()
+a=0
+b=0
+c=0
+list_ouvert=[]
+list_ferme=[]
+test=True
+for i in e:
+    if i == ')' and len(list_ouvert) == 0 or i == ']'and len(list_ouvert) == 0 or i == '}' and len(list_ouvert) == 0:
+        test=False
+    elif i == '(' or i == '[' or i =='{':
+        list_ouvert.append(i)
+    elif i == ")" and len(list_ouvert)>0 and list_ouvert[-1]=="(":
+        list_ferme.append(i)
+        del list_ouvert[-1]
+    elif i == "]" and len(list_ouvert)>0 and list_ouvert[-1]=="[":
+        list_ferme.append(i)
+        del list_ouvert[-1]
+    elif i == "}" and len(list_ouvert)>0 and list_ouvert[-1]=="{":
+        list_ferme.append(i)
+        del list_ouvert[-1]
+if test==False:
+    print('false')
+else:
+    if len(list_ouvert)==0:
+        print('true')
+    else:
+        print("false")
