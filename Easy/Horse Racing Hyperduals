@@ -1,0 +1,24 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+horse_list=[]
+var=0
+res=99999999999999
+n = int(input())
+for i in range(n):
+    v, e = [int(j) for j in input().split()]
+    horse_list.append((v,e))
+while var<len(horse_list):
+    for i in range(len(horse_list)):
+        if i==var:
+            pass
+        else:
+            if abs(horse_list[i][0]-horse_list[var][0])+abs(horse_list[i][1]-horse_list[var][1])<res:
+                res=abs(horse_list[i][0]-horse_list[var][0])+abs(horse_list[i][1]-horse_list[var][1])
+    var+=1
+print(res)
+
+
+
