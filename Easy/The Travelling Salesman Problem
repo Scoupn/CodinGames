@@ -1,0 +1,39 @@
+import sys
+import math
+import operator
+cord=[]
+ss=[]
+v=[]
+ind=0
+resultat=0
+
+nonvisite=[] 
+visite = []
+maxdist=100000
+listindex=[]
+res=999999999
+n = int(input())
+for i in range(n):
+    x, y = [int(j) for j in input().split()]
+    cord.append((x,y))
+cordlen=len(cord)
+i=0
+reference=cord[:]
+premiereville=cord[0]
+while (len(cord)>1):
+    maxdist=100000
+    pp=0
+    for j in range(len(cord)):
+        if j!=i:
+            dtest=math.dist(cord[i],cord[j])
+            if dtest<maxdist:
+                maxdist=dtest
+                pp=cord[j]
+    cord.pop(i)
+    i=cord.index(pp)
+    q=reference.index(pp)
+    nonvisite.append(q)
+    ss.append(i) 
+    resultat+=maxdist
+resultat+=math.dist(reference[0],cord[0])
+print(round(resultat))
