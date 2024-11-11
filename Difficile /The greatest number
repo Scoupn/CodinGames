@@ -1,0 +1,49 @@
+import sys
+import math
+
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
+res=[]
+lint=[]
+o=[]
+n = int(input())
+l = input().split(' ')
+for i in l:
+    if i.isdigit():
+        lint.append(int(i))
+sortlint=sorted(lint)
+reversesortlint=sorted(lint,reverse=True)
+if sortlint.count(0)==len(sortlint):
+    print(0)
+
+else:
+
+    if "." in l and "-" in l:
+        res.append("-")
+        res.append(min(lint))
+        res.append('.')
+        for i in sortlint[1:]:
+            res.append(i)
+    if "." in l and "-" not in l:
+        for i in reversesortlint[:-1]:
+            res.append(i)
+        res.append(".")
+        res.append(reversesortlint[-1])
+
+
+
+    if "-" in l and "." not in l:
+        res.append("-")
+        for i in sortlint:
+            res.append(i)
+    if '-' not in l and '.' not in l:
+        for i in reversesortlint:
+            res.append(i)
+        
+    if "-" not in res and res[-1]==0 and "." in res:
+        res.remove(".")
+        res.remove(res[-1])
+
+    print(*res,sep="")
+
+
